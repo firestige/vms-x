@@ -8,13 +8,9 @@
         <artifactId>vms-x</artifactId>
         <version>0.1.0</version>
     </parent>
-
+    <packaging>pom</packaging>
     <artifactId>vms-gateway</artifactId>
-
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
+    <modules>
+        <module>vms-gateway-bootstrap</module>
+    </modules>
 </project>

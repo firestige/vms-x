@@ -9,6 +9,7 @@
   <modules>
     <module>vms-gateway</module>
     <module>vms-support-sip</module>
+    <module>vms-support-gb28181</module>
   </modules>
   <version>0.1.0</version>
   <name>vms-x</name>

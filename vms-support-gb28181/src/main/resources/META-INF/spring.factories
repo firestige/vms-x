@@ -1,0 +1,3 @@
+# Application Context Factories
+org.springframework.boot.ApplicationContextFactory=\
+io.firestige.iris.vms.gateway.gb28181.autoconfigure.ReactiveGb28181ServerApplicationContextFactory

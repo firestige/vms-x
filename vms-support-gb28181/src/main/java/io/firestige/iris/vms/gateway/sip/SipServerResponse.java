@@ -13,12 +13,14 @@ public interface SipServerResponse extends NettyOutbound, SipServerInfos {
     @Override
     SipServerResponse withConnection(Consumer<? super Connection> withConnection);
     boolean hasSentHeaders();
+    SipServerResponse header(CharSequence name, CharSequence value);
     SipServerResponse headers(SipHeaders headers);
     SipHeaders responseHeaders();
     Mono<Void> send();
     NettyOutbound sendHeaders();
     Mono<Void> sendNotFound();
     SipResponseStatus status();
+    SipResponseStatus status(SipResponseStatus status);
     default SipResponseStatus status(int status) {
         return status(SipResponseStatus.valueOf(status));
     }

@@ -1,6 +1,6 @@
 package io.firestige.iris.vms.gateway.gb28181.server;
 
-import io.firestige.iris.vms.gateway.sip.SipHandler;
+import io.firestige.iris.vms.gateway.gb28181.server.reactive.SipHandler;
 
 @FunctionalInterface
 public interface ReactiveGb28181ServerFactory {

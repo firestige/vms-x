@@ -98,7 +98,7 @@ public abstract class SipServer extends ServerTransport<SipServer, SipServerConf
     }
 
     record SipServerHandle(
-            BiFunction<? super SipServerRequest, ? super SipServerResponse, ? extends Publisher<Void>> handler
+            BiFunction<? super HttpServerRequest, ? super HttpServerResponse, ? extends Publisher<Void>> handler
     ) implements ConnectionObserver {
 
         @Override

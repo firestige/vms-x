@@ -1,7 +1,6 @@
 package io.firestige.iris.vms.gateway.gb28181.server.reactive;
 
-import io.firestige.iris.vms.gateway.sip.ServerSipRequest;
-import io.firestige.iris.vms.gateway.sip.SipMethod;
+import io.firestige.iris.vms.gateway.sip.ng.spring.SipMethod;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.MultiValueMap;

@@ -2,9 +2,8 @@ package io.firestige.iris.vms.gateway.gb28181.context;
 
 import io.firestige.iris.vms.gateway.gb28181.server.Gb28181Server;
 import io.firestige.iris.vms.gateway.gb28181.server.ReactiveGb28181ServerFactory;
-import io.firestige.iris.vms.gateway.sip.SipHandler;
+import io.firestige.iris.vms.gateway.gb28181.server.reactive.SipHandler;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.availability.AvailabilityChangeEvent;
 import org.springframework.boot.availability.ReadinessState;

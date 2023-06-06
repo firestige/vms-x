@@ -2,9 +2,9 @@ package io.firestige.iris.vms.gateway.gb28181.context;
 
 import io.firestige.iris.vms.gateway.gb28181.server.Gb28181Server;
 import io.firestige.iris.vms.gateway.gb28181.server.ReactiveGb28181ServerFactory;
-import io.firestige.iris.vms.gateway.sip.ServerSipRequest;
-import io.firestige.iris.vms.gateway.sip.ServerSipResponse;
-import io.firestige.iris.vms.gateway.sip.SipHandler;
+import io.firestige.iris.vms.gateway.gb28181.server.reactive.ServerSipRequest;
+import io.firestige.iris.vms.gateway.gb28181.server.reactive.ServerSipResponse;
+import io.firestige.iris.vms.gateway.gb28181.server.reactive.SipHandler;
 import org.springframework.boot.web.server.GracefulShutdownCallback;
 import org.springframework.util.Assert;
 import reactor.core.publisher.Mono;

@@ -19,6 +19,6 @@ public class SipVersion extends HttpVersion {
     }
 
     public SipVersion(String protocolName, int majorVersion, int minorVersion) {
-        super(protocolName, majorVersion, minorVersion, false, true);
+        super(protocolName, majorVersion, minorVersion, false);
     }
 }

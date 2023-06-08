@@ -1,13 +1,13 @@
 package io.firestige.iris.vms.gateway.sip;
 
-import io.firestige.iris.vms.gateway.gb28181.server.reactive.SipHeaders;
+import io.firestige.iris.vms.gateway.gb28182.server.reactive.SipHeaders;
 import reactor.core.publisher.Mono;
 import reactor.netty.Connection;
 import reactor.netty.NettyOutbound;
 
 import java.util.function.Consumer;
 
-public interface SipServerResponse extends NettyOutbound, SipServerInfos {
+public interface SipServerResponse extends NettyOutbound {
     SipServerResponse addHeader(CharSequence name, CharSequence value);
     SipServerResponse chunkedTransfer(boolean chunked);
     @Override

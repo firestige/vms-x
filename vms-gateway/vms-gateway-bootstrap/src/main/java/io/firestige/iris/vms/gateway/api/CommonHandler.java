@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import io.firestige.iris.vms.gateway.device.DeviceService;
-import io.firestige.iris.vms.gateway.gb28181.context.annotations.CmdType;
-import io.firestige.iris.vms.gateway.gb28181.context.type.Status;
-import io.firestige.iris.vms.gateway.gb28181.server.context.Gb28181Response;
-import io.firestige.iris.vms.gateway.gb28181.server.handler.annotations.MessageMapping;
-import io.firestige.iris.vms.gateway.gb28181.server.handler.annotations.Params;
-import io.firestige.iris.vms.gateway.gb28181.server.handler.annotations.RequestHandler;
+import io.firestige.iris.vms.gateway.gb28182.context.annotations.CmdType;
+import io.firestige.iris.vms.gateway.gb28182.context.type.Status;
+import io.firestige.iris.vms.gateway.gb28182.server.context.Gb28181Response;
+import io.firestige.iris.vms.gateway.gb28182.server.handler.annotations.MessageMapping;
+import io.firestige.iris.vms.gateway.gb28182.server.handler.annotations.Params;
+import io.firestige.iris.vms.gateway.gb28182.server.handler.annotations.RequestHandler;
 import reactor.core.publisher.Mono;
 
 @RequestHandler

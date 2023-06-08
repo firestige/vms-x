@@ -101,12 +101,12 @@ public class ReactorResourceFactory implements InitializingBean, DisposableBean 
         if (this.useGlobalResources) {
             Assert.isTrue(Objects.isNull(this.loopResources) && Objects.isNull(this.connectionProvider),
                     "'useGlobalResources' is mutually exclusive with explicitly configured resources");
-            SipResources sipResources = SipResources.get();
-            if (Objects.nonNull(this.globalResourcesConsumer)) {
-                this.globalResourcesConsumer.accept(sipResources);
-            }
-            this.connectionProvider = sipResources;
-            this.loopResources = sipResources;
+//            SipResources sipResources = SipResources.get();
+//            if (Objects.nonNull(this.globalResourcesConsumer)) {
+//                this.globalResourcesConsumer.accept(sipResources);
+//            }
+//            this.connectionProvider = sipResources;
+//            this.loopResources = sipResources;
         } else {
             if (Objects.isNull(this.loopResources)) {
                 this.manageLoopResources = true;

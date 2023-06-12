@@ -1,23 +1,32 @@
-package io.firestige.iris.vms.gateway.gb28181.context;
+package io.firestige.iris.vms.support.gb28181.context;
 
 import org.springframework.boot.ApplicationContextFactory;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 
-class SipServerApplicationContextFactory implements ApplicationContextFactory {
+/**
+ * GB28181ApplicationContextFactory
+ * 注册到spring.factories，用于提供自动创建GB28181上下文
+ *
+ * @author firestige
+ * @version 0.1.0
+ * @createAt 2023/6/11
+ **/
+class GB28181ApplicationContextFactory implements ApplicationContextFactory {
+
     @Override
     public Class<? extends ConfigurableEnvironment> getEnvironmentType(WebApplicationType webApplicationType) {
-        return ApplicationGb28181Environment.class;
+        return GB28181Environment.class;
     }
 
     @Override
     public ConfigurableEnvironment createEnvironment(WebApplicationType webApplicationType) {
-        return new ApplicationGb28181Environment();
+        return new GB28181Environment();
     }
 
     @Override
     public ConfigurableApplicationContext create(WebApplicationType webApplicationType) {
-        return new Gb28181ServerApplicationContext();
+        return new GB28181ApplicationContext();
     }
 }

@@ -1,10 +1,9 @@
 package io.firestige.iris.vms.support.gb28181.context;
 
 import io.firestige.iris.core.context.GenericVmsApplicationContext;
-import io.firestige.iris.vms.support.sip.server.SipHandler;
-import io.firestige.iris.vms.support.sip.server.SipServer;
-import io.firestige.iris.vms.support.sip.context.ConfigurableSipServerApplicationContext;
-import io.firestige.iris.vms.support.sip.server.SipServerFactory;
+import io.firestige.iris.vms.support.gb28181.server.SipHandler;
+import io.firestige.iris.vms.support.gb28181.server.SipServer;
+import io.firestige.iris.vms.support.gb28181.server.SipServerFactory;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -80,7 +79,7 @@ public class GB28181ApplicationContext extends GenericVmsApplicationContext impl
     }
 
     private String getSipServerFactoryBeanName() {
-        String[] beanNames = getBeanFactory().getBeanNamesForType(SipServer.class);
+        String[] beanNames = getBeanFactory().getBeanNamesForType(SipServerFactory.class);
         if (beanNames.length == 0) {
             throw new ApplicationContextException("No SipServer factory bean defined");
         }

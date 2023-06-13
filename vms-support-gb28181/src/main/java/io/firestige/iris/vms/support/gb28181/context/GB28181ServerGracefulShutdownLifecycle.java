@@ -1,7 +1,7 @@
 package io.firestige.iris.vms.support.gb28181.context;
 
 import io.firestige.iris.core.context.GenericVmsServerGracefulShutdownLifecycle;
-import io.firestige.iris.vms.support.sip.server.SipServer;
+import io.firestige.iris.vms.support.gb28181.server.SipServer;
 
 /**
  * SipServerGracefulShutdownLifecycle

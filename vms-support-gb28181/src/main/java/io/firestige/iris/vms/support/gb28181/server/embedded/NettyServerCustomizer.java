@@ -1,4 +1,4 @@
-package io.firestige.iris.vms.support.sip.server.embedded;
+package io.firestige.iris.vms.support.gb28181.server.embedded;
 
 import reactor.netty.http.server.HttpServer;
 

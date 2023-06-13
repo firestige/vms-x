@@ -1,0 +1,9 @@
+{
+  "groups": [
+    {
+      "name": "server.gb28181",
+      "type": "io.firestige.iris.vms.support.gb28181.autoconfigure.GB28181Properties",
+      "sourceType": "io.firestige.iris.vms.support.gb28181.autoconfigure.GB28181Properties"
+    }
+  ]
+}

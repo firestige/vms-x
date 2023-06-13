@@ -1,9 +1,11 @@
 package io.firestige.iris.vms.support.gb28181.context;
 
 import io.firestige.iris.core.server.GracefulShutdownCallback;
-import io.firestige.iris.vms.support.sip.server.SipHandler;
-import io.firestige.iris.vms.support.sip.server.SipServer;
-import io.firestige.iris.vms.support.sip.server.SipServerFactory;
+import io.firestige.iris.vms.support.gb28181.server.ServerSipRequest;
+import io.firestige.iris.vms.support.gb28181.server.ServerSipResponse;
+import io.firestige.iris.vms.support.gb28181.server.SipHandler;
+import io.firestige.iris.vms.support.gb28181.server.SipServer;
+import io.firestige.iris.vms.support.gb28181.server.SipServerFactory;
 import reactor.core.publisher.Mono;
 
 import java.util.function.Supplier;
@@ -59,7 +61,7 @@ class GB28181ServerManager {
             this.lazyInit = lazyInit;
         }
 
-        private Mono<Void> handleUninitialized() {
+        private Mono<Void> handleUninitialized(ServerSipRequest request, ServerSipResponse response) {
             throw new IllegalStateException("The SipHandler has not yet been initialized");
         }
 
@@ -68,8 +70,8 @@ class GB28181ServerManager {
         }
 
         @Override
-        public Mono<Void> handle() {
-            return this.delegate.handle();
+        public Mono<Void> handle(ServerSipRequest request, ServerSipResponse response) {
+            return this.delegate.handle(request, response);
         }
 
         SipHandler getHandler() {
@@ -78,15 +80,15 @@ class GB28181ServerManager {
     }
 
     private static final class LazySipHandler implements SipHandler {
-        private Mono<SipHandler> delegate;
+        private final Mono<SipHandler> delegate;
 
         public LazySipHandler(Supplier<SipHandler> supplier) {
             this.delegate = Mono.fromSupplier(supplier);
         }
 
         @Override
-        public Mono<Void> handle() {
-            return delegate.flatMap((handler -> handler.handle()));
+        public Mono<Void> handle(ServerSipRequest request, ServerSipResponse response) {
+            return delegate.flatMap((handler -> handler.handle(request, response)));
         }
     }
 }

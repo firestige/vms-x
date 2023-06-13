@@ -1,4 +1,4 @@
-package io.firestige.iris.vms.support.sip.context;
+package io.firestige.iris.vms.support.gb28181.context;
 
 /**
  * ConfigurableSuoServerApplication

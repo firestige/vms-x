@@ -19,7 +19,7 @@
     <java.version>17</java.version>
     <spring-boot.version>3.1.0</spring-boot.version>
     <reactor.version>2022.0.7</reactor.version>
-    <netty.version>4.1.39.Final</netty.version>
+    <netty.version>4.1.93.Final</netty.version>
     <guava.version>32.0.0-jre</guava.version>
     <disruptor.version>4.0.0.RC1</disruptor.version>
     <junit.version>5.9.3</junit.version>

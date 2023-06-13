@@ -1,7 +1,13 @@
 package io.firestige.iris.vms.gateway;
 
+import io.firestige.iris.vms.support.gb28181.server.SipHandler;
+import reactor.core.publisher.Mono;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * BootStrap
@@ -13,7 +19,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class Bootstrap {
-    public static void main(String[] args) {
+    @Bean
+    SipHandler sipHandler() {
+        return (request, response) -> Mono.empty();
+    }
+    public static void main(String[] args) throws InterruptedException {
         SpringApplication.run(Bootstrap.class, args);
+        TimeUnit.MINUTES.sleep(3);
     }
 }

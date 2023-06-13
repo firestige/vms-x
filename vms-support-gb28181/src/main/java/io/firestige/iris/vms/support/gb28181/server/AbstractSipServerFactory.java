@@ -1,4 +1,4 @@
-package io.firestige.iris.vms.support.sip.server;
+package io.firestige.iris.vms.support.gb28181.server;
 
 import io.firestige.iris.core.server.AbstractConfigurableVmsServerFactory;
 

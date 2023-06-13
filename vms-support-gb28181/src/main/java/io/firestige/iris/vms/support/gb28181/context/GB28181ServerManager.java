@@ -15,13 +15,13 @@ import java.util.function.Supplier;
  * @version 0.1.0
  * @createAt 2023/6/11
  **/
-class SipServerManager {
+class GB28181ServerManager {
     private final GB28181ApplicationContext ctx;
     private final DelayedInitializationSipHandler handler;
     private final SipServer server;
 
-    public SipServerManager(GB28181ApplicationContext ctx, SipServerFactory factory,
-                            Supplier<SipHandler> handlerSupplier, boolean lazyInit) {
+    public GB28181ServerManager(GB28181ApplicationContext ctx, SipServerFactory factory,
+                                Supplier<SipHandler> handlerSupplier, boolean lazyInit) {
         this.ctx = ctx;
         this.handler = new DelayedInitializationSipHandler(handlerSupplier, lazyInit);
         this.server = factory.getSipServer(this.handler);

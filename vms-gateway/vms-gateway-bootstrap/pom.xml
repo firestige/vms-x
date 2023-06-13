@@ -11,12 +11,10 @@
   <artifactId>vms-gateway-bootstrap</artifactId>
   <dependencies>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-webflux</artifactId>
+      <groupId>io.firestige.iris</groupId>
+      <artifactId>vms-support-gb28181</artifactId>
+      <version>0.1.0</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -27,12 +25,6 @@
       <groupId>io.projectreactor</groupId>
       <artifactId>reactor-test</artifactId>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.firestige.iris</groupId>
-      <artifactId>vms-support-gb28181</artifactId>
-      <version>0.1.0</version>
-      <scope>compile</scope>
     </dependency>
   </dependencies>
   <build>

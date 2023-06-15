@@ -33,6 +33,7 @@ public class NettySipServerFactory extends AbstractSipServerFactory {
     private ShutdownStrategy shutdown;
 
     public NettySipServerFactory() {
+        super(5061);
     }
 
     public NettySipServerFactory(int port) {
@@ -50,7 +51,7 @@ public class NettySipServerFactory extends AbstractSipServerFactory {
         HttpServer server = HttpServer.create();
         if (this.resourceFactory != null) {
             LoopResources resources = this.resourceFactory.getLoopResources();
-            server.runOn(resources).bindAddress(this::getListenAddress);
+            server = server.runOn(resources).bindAddress(this::getListenAddress);
         } else {
             server = server.bindAddress(this::getListenAddress);
         }

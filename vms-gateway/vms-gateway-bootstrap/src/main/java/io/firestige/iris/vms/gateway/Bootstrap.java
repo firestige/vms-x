@@ -23,8 +23,7 @@ public class Bootstrap {
     SipHandler sipHandler() {
         return (request, response) -> Mono.empty();
     }
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         SpringApplication.run(Bootstrap.class, args);
-        TimeUnit.MINUTES.sleep(3);
     }
 }

@@ -36,7 +36,6 @@ public abstract class GenericVmsServerGracefulShutdownLifecycle implements Smart
     public void stop(@NonNull Runnable callback) {
         this.running = false;
         this.server.shutdown(unused -> callback.run());
-        SmartLifecycle.super.stop(callback);
     }
 
     @Override

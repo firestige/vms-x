@@ -1,5 +1,7 @@
 package io.firestige.iris.vms.support.gb28181.server.embedded;
 
+import io.firestige.iris.core.server.GracefulShutdownCallback;
+import io.firestige.iris.core.server.GracefullyShutdownStrategy;
 import io.firestige.iris.core.server.ServerException;
 import io.firestige.iris.core.server.ShutdownStrategy;
 import io.firestige.iris.vms.support.gb28181.server.ReactorSipHandlerAdapter;
@@ -12,10 +14,14 @@ import reactor.netty.http.server.HttpServerRequest;
 import reactor.netty.http.server.HttpServerResponse;
 
 import org.reactivestreams.Publisher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.Optional;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * NettySipServer
@@ -25,6 +31,7 @@ import java.util.function.BiFunction;
  * @createAt 2023/6/11
  **/
 public class NettySipServer implements SipServer {
+    private static final Logger LOGGER = LoggerFactory.getLogger(NettySipServer.class);
     private final HttpServer server;
     private final BiFunction<? super HttpServerRequest, ? super HttpServerResponse, ? extends Publisher<Void>> handler;
     private final Duration lifecycleTimeout;
@@ -51,8 +58,28 @@ public class NettySipServer implements SipServer {
                 // todo: add more error processor
                 throw new ServerException("Unable to start server", ex);
             }
+            if (this.disposableServer != null) {
+                LOGGER.info("Netty started" + getStartedOnMessage(this.disposableServer));
+            }
             // todo: add started log
             startDaemonAwaitThread();
+        }
+    }
+
+    private String getStartedOnMessage(DisposableServer server) {
+        StringBuilder message = new StringBuilder();
+        tryAppend(message, "port %s", server::port);
+        tryAppend(message, "path %s", server::path);
+        return (message.length() > 0) ? " on " + message : "";
+    }
+
+    private void tryAppend(StringBuilder message, String format, Supplier<Object> supplier) {
+        try {
+            Object value = supplier.get();
+            message.append((message.length() != 0) ? " " : "");
+            message.append(String.format(format, value));
+        }
+        catch (UnsupportedOperationException ex) {
         }
     }
 
@@ -63,9 +90,18 @@ public class NettySipServer implements SipServer {
                 .orElseGet(server::bindNow);
     }
 
+    @Override
+    public void shutdown(Consumer<GracefullyShutdownStrategy> callback) {
+        if (this.shutdown == null) {
+            callback.accept(GracefullyShutdownStrategy.IMMEDIATE);
+            return;
+        }
+        this.shutdown.shutdownGracefully(callback::accept);
+    }
+
     private void startDaemonAwaitThread() {
         Thread awaitThread = new Thread(() -> this.disposableServer.onDispose().block(), "sip-server");
-        awaitThread.setDaemon(true);
+        awaitThread.setDaemon(false);
         awaitThread.setContextClassLoader(getClass().getClassLoader());
         awaitThread.start();
     }

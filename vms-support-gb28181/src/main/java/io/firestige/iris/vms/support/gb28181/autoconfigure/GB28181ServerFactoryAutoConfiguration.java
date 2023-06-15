@@ -1,11 +1,13 @@
 package io.firestige.iris.vms.support.gb28181.autoconfigure;
 
 import io.firestige.iris.vms.support.gb28181.SipInputMessage;
+import io.firestige.iris.vms.support.gb28181.server.embedded.NettySipServerFactoryCustomizer;
 
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
 
@@ -22,4 +24,8 @@ import org.springframework.core.Ordered;
 @EnableConfigurationProperties(GB28181Properties.class)
 @Import({SipServerFactoryConfiguration.class})
 public class GB28181ServerFactoryAutoConfiguration {
+    @Bean
+    public NettySipServerFactoryCustomizer nettySipServerFactoryCustomizer(GB28181Properties properties) {
+        return new NettySipServerFactoryCustomizer(properties);
+    }
 }

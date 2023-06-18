@@ -159,6 +159,7 @@ public abstract class AbstractServerSipResponse implements ServerSipResponse {
         }
 
         allActions = allActions.concatWith(Mono.fromRunnable(() -> {
+            applyStatusCode();
             applyHeaders();
             this.status.set(Status.COMMITTED);
         }));

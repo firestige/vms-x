@@ -1,5 +1,9 @@
 package io.firestige.iris.vms.support.gb28181;
 
+import reactor.core.publisher.Flux;
+
+import org.springframework.core.io.buffer.DataBuffer;
+
 /**
  * SipInputMessage
  *
@@ -7,5 +11,5 @@ package io.firestige.iris.vms.support.gb28181;
  * @createAt 2023/6/14
  **/
 public interface SipInputMessage extends SipMessage {
-    // todo 待完善
+    Flux<DataBuffer> getBody();
 }

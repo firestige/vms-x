@@ -1,5 +1,7 @@
 package io.firestige.iris.vms.support.gb28181;
 
+import java.net.URI;
+
 /**
  * SipRequest
  *
@@ -8,5 +10,6 @@ package io.firestige.iris.vms.support.gb28181;
  * @createAt 2023/6/14
  **/
 public interface SipRequest extends SipMessage {
-    // todo 待完善
+    SipMethod getMethod();
+    URI getUri();
 }
